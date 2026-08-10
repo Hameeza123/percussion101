@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percussion 101 — Private Drum &amp; Percussion Lessons</title>
+<meta name="description" content="Percussion 101 offers private drum kit, snare, marching and mallet percussion lessons with co-founders Harry Taylor and Quinn Martin.">
+<link rel="icon" type="image/png" href="assets/Screenshot 2026-08-02 at 6.54.11 PM-no-bg.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="brand" data-tab-link="home">
+      <span class="brand-text">PERCUSSION <span class="brand-101">101</span></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" data-tab-link="home">Home</a>
+      <a href="#about" data-tab-link="about">About</a>
+      <a href="#calendar" data-tab-link="calendar">Calendar</a>
+      <a href="#booking" data-tab-link="booking" class="nav-cta">Book a Lesson</a>
+      <a href="#contact" data-tab-link="contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-outline header-login-button" id="headerLoginButton">Login</button>
+      <div class="profile-menu-wrap">
+        <button class="profile-button" id="profileButton" aria-label="Open profile" hidden>
+          <span id="profileInitials"></span>
+        </button>
+        <div class="profile-menu" id="profileMenu" hidden>
+          <button class="profile-menu-item" id="viewProfileBtn" type="button">View profile</button>
+          <button class="profile-menu-item" id="signOutBtn" type="button">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section class="tab-panel" id="home" data-tab="home">
+    <div class="hero">
+      <div class="hero-logo-wrap">
+        <img src="assets/final logo.png" alt="Percussion 101 logo" class="hero-logo">
+      </div>
+      <p class="hero-tagline">Private percussion lessons for drummers of every level</p>
+      <p class="hero-sub">Founded by <strong>Harry Taylor</strong> &amp; <strong>Quinn Martin</strong></p>
+      <div class="hero-actions">
+        <a href="#booking" data-tab-link="booking" class="btn btn-primary">Book a Lesson</a>
+        <a href="#calendar" data-tab-link="calendar" class="btn btn-outline">View Calendar</a>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>What We Teach</h2>
+      <ul class="teach-list">
+        <li><strong>Drum Kit</strong> — Groove, fills, independence and reading — from first stick grip to full-kit fluency.</li>
+        <li><strong>Snare &amp; Rudiments</strong> — Rudimental technique, sight-reading and audition prep for snare drummers.</li>
+        <li><strong>Marching Percussion</strong> — Battery and front ensemble fundamentals for marching band and drumline.</li>
+        <li><strong>Mallet Percussion</strong> — Xylophone, marimba and vibraphone technique for concert and jazz players.</li>
+      </ul>
+    </div>
+
+    <div class="section-block cta-block">
+      <h2>Ready to start?</h2>
+      <p>Check open times on the calendar, then book your first lesson in a couple of minutes.</p>
+      <div class="hero-actions">
+        <a href="#booking" data-tab-link="booking" class="btn btn-primary">Book a Lesson</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="tab-panel" id="about" data-tab="about">
+    <div class="section-block">
+      <h1>About Percussion 101</h1>
+      <p class="lead">Percussion 101 was co-founded to give drummers and percussionists of all ages personalized, one-on-one instruction — whether you're picking up sticks for the first time or preparing for a marching band audition.</p>
+
+      <h2>Meet Your Teachers</h2>
+      <div class="card-grid teachers-grid">
+        <div class="card teacher-card">
+          <div class="avatar">HT</div>
+          <h3>Harry Taylor</h3>
+          <p class="teacher-role">Co-Founder &amp; Instructor</p>
+          <p>Harry co-founded Percussion 101 to help students build strong fundamentals and a genuine love of playing.</p>
+        </div>
+        <div class="card teacher-card">
+          <div class="avatar">QM</div>
+          <h3>Quinn Martin</h3>
+          <p class="teacher-role">Co-Founder &amp; Instructor</p>
+          <p>Quinn co-founded Percussion 101 with a focus on personalized lesson plans for every student's goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="tab-panel" id="calendar" data-tab="calendar">
+    <div class="section-block">
+      <h1>Calendar</h1>
+      <p class="lead">Pick a day to see open lesson times. Tap a time to start booking it.</p>
+
+      <div class="calendar-widget">
+        <div class="calendar-controls">
+          <button id="prevMonth" class="cal-nav-btn" aria-label="Previous month">&larr;</button>
+          <h2 id="calMonthLabel">Month Year</h2>
+          <button id="nextMonth" class="cal-nav-btn" aria-label="Next month">&rarr;</button>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="calendar-legend">
+          <span><i class="dot dot-open"></i> Open times</span>
+          <span><i class="dot dot-none"></i> No lessons</span>
+          <span><i class="dot dot-today"></i> Today</span>
+        </div>
+      </div>
+
+      <div id="dayTimes" class="day-times"></div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="tab-panel" id="booking" data-tab="booking">
+    <div class="section-block">
+      <h1>Book a Lesson</h1>
+      <p class="lead">Booking is simple — check the calendar for an open time, then call or text us to reserve it.</p>
+
+      <ol class="booking-steps">
+        <li>Open the <a href="#calendar" data-tab-link="calendar">Calendar</a> tab and find a day with open times.</li>
+        <li>Call or text <a href="tel:+14693907997">+1 (469) 390-7997</a> with your preferred lesson type, teacher, and time.</li>
+        <li>We'll confirm your spot and see you at your first lesson.</li>
+      </ol>
+
+      <div class="hero-actions">
+        <a href="tel:+14693907997" class="btn btn-primary">Call to Book: +1 (469) 390-7997</a>
+        <a href="#calendar" data-tab-link="calendar" class="btn btn-outline">View Calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="tab-panel" id="contact" data-tab="contact">
+    <div class="section-block">
+      <h1>Contact</h1>
+      <p class="lead">Questions before booking? Reach out any time.</p>
+
+      <div class="contact-info">
+        <div class="contact-row">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+14693907997" class="contact-value">+1 (469) 390-7997</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value contact-placeholder" id="contactEmailValue">Coming soon</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Founders</span>
+          <span class="contact-value">Harry Taylor &amp; Quinn Martin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section class="tab-panel" id="login" data-tab="login">
+    <div class="section-block">
+      <h1>Login</h1>
+      <p class="lead">Sign in to manage your lessons, view your booking details, and keep your personal information up to date.</p>
+
+      <div class="account-grid">
+        <div class="account-card account-form-card" id="accountForms">
+          <div class="account-panel" id="loginPanel">
+            <h2>Log in</h2>
+            <div class="alert" id="loginAlert" aria-live="polite"></div>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" id="loginEmail" required>
+            </label>
+            <label class="form-field">
+              <span>Password</span>
+              <input type="password" id="loginPassword" required>
+            </label>
+            <div class="form-actions">
+              <button id="loginButton" class="btn btn-primary">Log In</button>
+            </div>
+          </div>
+
+          <div class="account-panel" id="registerPanel">
+            <h2>Create account</h2>
+            <div class="alert" id="registerAlert" aria-live="polite"></div>
+            <label class="form-field">
+              <span>Your name</span>
+              <input type="text" id="registerName" required>
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" id="registerEmail" required>
+            </label>
+            <label class="form-field">
+              <span>Password</span>
+              <input type="password" id="registerPassword" required>
+            </label>
+            <div class="form-actions">
+              <button id="registerButton" class="btn btn-outline">Create account</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="account-card account-status-card">
+          <div class="account-panel">
+            <h2>Your account</h2>
+            <p id="accountMessage">Use the forms to sign in or create a new account. Your data is stored locally in this browser.</p>
+            <div class="account-profile" id="profileSummary" hidden>
+              <p><strong>Name:</strong> <span id="profileName"></span></p>
+              <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+              <p><strong>Member since:</strong> <span id="profileCreated"></span></p>
+              <div class="form-actions">
+                <button id="logoutButton" class="btn btn-outline">Sign out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="assets/Screenshot_2026-08-02_at_6.24.54_PM-removebg-preview.png" alt="" class="footer-icon">
+    <p>&copy; <span id="year"></span> Percussion 101 — Harry Taylor &amp; Quinn Martin</p>
+    <p><a href="tel:+14693907997">+1 (469) 390-7997</a></p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a791c521a0a1d1d4760a402/1jvkhd949';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body>
+</html>

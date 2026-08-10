@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="Percussion 101 logo">
+  <g fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" stroke-width="14">
+    <line x1="80" y1="40" x2="80" y2="380"/>
+    <ellipse cx="80" cy="40" rx="16" ry="22" fill="#111111"/>
+    <line x1="340" y1="40" x2="340" y2="380"/>
+    <ellipse cx="340" cy="40" rx="16" ry="22" fill="#111111"/>
+    <circle cx="210" cy="210" r="140"/>
+  </g>
+  <g fill="#111111">
+    <circle cx="330" cy="210" r="7"/>
+    <circle cx="314" cy="150" r="7"/>
+    <circle cx="270" cy="106" r="7"/>
+    <circle cx="210" cy="90" r="7"/>
+    <circle cx="150" cy="106" r="7"/>
+    <circle cx="126" cy="150" r="7"/>
+    <circle cx="90" cy="210" r="7"/>
+    <circle cx="126" cy="270" r="7"/>
+    <circle cx="150" cy="314" r="7"/>
+    <circle cx="210" cy="330" r="7"/>
+    <circle cx="270" cy="314" r="7"/>
+    <circle cx="314" cy="270" r="7"/>
+  </g>
+</svg>

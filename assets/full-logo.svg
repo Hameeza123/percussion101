@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 260" role="img" aria-label="Percussion 101 logo">
+  <style>
+    .brand-text { font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif; font-size: 142px; fill: #111111; letter-spacing: -3px; font-weight: 900; }
+    .icon-line { stroke: #111111; stroke-width: 14; stroke-linecap: round; }
+    .icon-ring { fill: none; stroke: #111111; stroke-width: 14; }
+    .icon-dot { fill: #111111; }
+  </style>
+
+  <text x="0" y="168" class="brand-text">PERCUSSION</text>
+
+  <g transform="translate(760 0)">
+    <line x1="0" y1="20" x2="0" y2="240" class="icon-line" />
+    <ellipse cx="0" cy="20" rx="16" ry="22" class="icon-dot" />
+
+    <line x1="240" y1="20" x2="240" y2="240" class="icon-line" />
+    <ellipse cx="240" cy="20" rx="16" ry="22" class="icon-dot" />
+
+    <circle cx="120" cy="130" r="110" class="icon-ring" />
+    <circle cx="226" cy="130" r="8" class="icon-dot" />
+    <circle cx="204" cy="190" r="8" class="icon-dot" />
+    <circle cx="166" cy="232" r="8" class="icon-dot" />
+    <circle cx="120" cy="246" r="8" class="icon-dot" />
+    <circle cx="74" cy="232" r="8" class="icon-dot" />
+    <circle cx="36" cy="190" r="8" class="icon-dot" />
+    <circle cx="16" cy="130" r="8" class="icon-dot" />
+    <circle cx="36" cy="70" r="8" class="icon-dot" />
+    <circle cx="74" cy="28" r="8" class="icon-dot" />
+    <circle cx="120" cy="14" r="8" class="icon-dot" />
+    <circle cx="166" cy="28" r="8" class="icon-dot" />
+    <circle cx="204" cy="70" r="8" class="icon-dot" />
+  </g>
+</svg>
