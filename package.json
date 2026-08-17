@@ -1,0 +1,12 @@
+{
+  "name": "percussion101-tawk-server",
+  "version": "1.0.0",
+  "description": "Small helper server to generate Tawk visitor hash for secure visitor integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

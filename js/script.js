@@ -100,6 +100,7 @@
     if (registerButton) registerButton.addEventListener('click', handleRegister);
     if (logoutButton) logoutButton.addEventListener('click', function () {
       clearCurrentUser();
+      clearTawkVisitor();
       renderAccountPanel('signedOut');
     });
     var profileMenu = document.getElementById('profileMenu');
@@ -120,6 +121,7 @@
     if (signOutBtn) signOutBtn.addEventListener('click', function () {
       if (profileMenu) profileMenu.hidden = true;
       clearCurrentUser();
+      clearTawkVisitor();
       renderAccountPanel('signedOut');
     });
     if (headerLoginButton) headerLoginButton.addEventListener('click', function () {
@@ -161,6 +163,67 @@
     localStorage.removeItem(CURRENT_USER_KEY);
   }
 
+  // ---------- Tawk secure visitor integration ----------
+  // Attach a server-signed visitor hash and load the Tawk widget.
+  function loadTawkEmbed() {
+    if (document.querySelector('script[data-tawk-widget]')) return;
+    (function() {
+      var s1 = document.createElement('script');
+      s1.setAttribute('data-tawk-widget', '1');
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6a791c521a0a1d1d4760a402/1jvkhd949';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      document.head.appendChild(s1);
+    })();
+  }
+
+  async function attachTawkSecure(user) {
+    if (!user || !user.email) return;
+    try {
+      var q = new URLSearchParams({ id: user.email });
+      var res = await fetch('/api/tawk-hash?' + q, { credentials: 'same-origin' });
+      if (!res.ok) { loadTawkEmbed(); return; }
+      var data = await res.json();
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_API.visitor = {
+        name: user.name || '',
+        email: user.email || '',
+        hash: data.hash || ''
+      };
+
+      var existing = document.querySelector('script[data-tawk-widget]');
+      if (!existing) {
+        // Load the widget after setting visitor so Tawk picks up the signed visitor hash.
+        loadTawkEmbed();
+      } else {
+        // If widget already loaded, try setting attributes; if not supported, reload the script.
+        if (window.Tawk_API && typeof window.Tawk_API.setAttributes === 'function') {
+          try { window.Tawk_API.setAttributes({ name: user.name, email: user.email }, function(){}); } catch (e) {}
+        } else {
+          // remove and re-insert to force re-init with visitor
+          existing.parentNode.removeChild(existing);
+          loadTawkEmbed();
+        }
+      }
+    } catch (e) {
+      loadTawkEmbed();
+    }
+  }
+
+  function clearTawkVisitor() {
+    try {
+      // Remove any server-signed visitor and reload anonymous widget
+      if (document.querySelector('script[data-tawk-widget]')) {
+        document.querySelector('script[data-tawk-widget]').parentNode.removeChild(document.querySelector('script[data-tawk-widget]'));
+      }
+      if (window.Tawk_API) {
+        try { window.Tawk_API.visitor = {}; } catch (e) {}
+      }
+      loadTawkEmbed();
+    } catch (e) {}
+  }
+
   function findUserByEmail(email) {
     var users = getUsers();
     return users.find(function (user) {
@@ -193,6 +256,7 @@
 
     setCurrentUser(user);
     renderAccountPanel('loggedIn');
+    try { attachTawkSecure(getCurrentUser()); } catch (e) {}
   }
 
   function handleRegister(event) {
@@ -224,6 +288,7 @@
     saveUsers(users);
     setCurrentUser(newUser);
     renderAccountPanel('registered');
+    try { attachTawkSecure(getCurrentUser()); } catch (e) {}
   }
 
   function updateLoginHeader() {
